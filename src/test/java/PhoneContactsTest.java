@@ -7,13 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class PhoneContactsTest {
-    PhoneContacts phoneContacts = new PhoneContacts();
-    String newGroup1 = "new Group1";
-    String newGroup2 = "new Group2";
-    Contact newContact1 = new Contact("new Contact 1", "111");
-    Contact newContact2 = new Contact("new Contact 2", "222");
-
-
+    final String newGroup1 = "new Group1";
+    final String newGroup2 = "new Group2";
+    final Contact newContact1 = new Contact("new Contact 1", "111");
+    final Contact newContact2 = new Contact("new Contact 2", "222");
 
     @BeforeEach
     public void startingTest() {
@@ -22,6 +19,7 @@ public class PhoneContactsTest {
 
     @Test
     void addGroupTest() {
+        PhoneContacts phoneContacts = new PhoneContacts();
         phoneContacts.addGroup(newGroup1);
         phoneContacts.addGroup(newGroup2);
 
@@ -34,6 +32,7 @@ public class PhoneContactsTest {
 
     @Test
     void addContactTest() {
+        PhoneContacts phoneContacts = new PhoneContacts();
         phoneContacts.addGroup(newGroup1);
         phoneContacts.addGroup(newGroup2);
 

@@ -23,8 +23,10 @@ public class Contact implements Comparable<Contact>{
         this.phoneNumber = phoneNumber;
     }
 
+
     @Override
     public int compareTo(Contact o) {
         return name.compareTo(o.name);
     }
 }
+

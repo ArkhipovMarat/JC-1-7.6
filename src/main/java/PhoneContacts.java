@@ -2,7 +2,6 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class PhoneContacts {
-
     private Map<String, ArrayList<Contact>> contactsMap;
 
     public PhoneContacts() {
@@ -15,9 +14,18 @@ public class PhoneContacts {
 
     public void addContact(String group, Contact contact) {
         if (contactsMap.containsKey(group)) {
+
+            // первый вариант
+            // сортировать коллекцию после каждого добавления контакта
+            // contactsMap.get(group).add(contact);
+            // Collections.sort(contactsMap.get(group));
+
+            // второй вариант
+            // определять сначала позицию вставки
             int index = Collections.binarySearch(contactsMap.get(group),contact);
             index = Math.abs(index)-1;
             contactsMap.get(group).add(index,contact);
+
         } else {
             System.out.println("Такой группы не найдено");
         }
@@ -26,11 +34,13 @@ public class PhoneContacts {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("Телефонная книга:\n");
-        Set<Entry<String, ArrayList<Contact>>> entries = contactsMap.entrySet();
-        for (Entry<String, ArrayList<Contact>> groupContacts: entries) {
+        Set<Map.Entry<String, ArrayList<Contact>>> entries = contactsMap.entrySet();
+
+        for (Map.Entry<String, ArrayList<Contact>> groupContacts: entries) {
             stringBuilder
                     .append(groupContacts.getKey())
                     .append("\n");
+
             for (Contact contact :groupContacts.getValue()) {
                 stringBuilder
                         .append(contact.getName())
